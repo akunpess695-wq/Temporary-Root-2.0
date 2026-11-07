@@ -1,24 +1,29 @@
-name: Check Only APK Build
+name: Build Safe Checker APK
 on:
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
-  apk:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: '17'
       - uses: android-actions/setup-android@v3
-      - name: Build debug APK (does not run app)
-        run: chmod +x ./gradlew && ./gradlew :app:assembleDebug --stacktrace
-      - uses: actions/upload-artifact@v4
+      - name: Install Android SDK 35
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - name: Install Gradle
+        uses: gradle/actions/setup-gradle@v4
         with:
-          name: TempRoot-Check-Only-debug
+          gradle-version: '8.9'
+      - name: Compile APK (no exploit execution)
+        run: gradle :app:assembleDebug --stacktrace
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: TempRoot-Checker-Safe-debug
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
