@@ -1,23 +1,9 @@
-# HANDOFF — TempRoot Checker Safe v1
-Date: 2026-11-07
-Source baseline: user-provided Temporary-Root-2.0.zip and TempRoot-Check-Only-Source.zip inspected.
-Status: SOURCE CANDIDATE — BUILD NOT RUN, DEVICE NOT TESTED.
+# TempRoot v2.1 Premium — Handoff
 
-## Scope
-Created a new minimal Android app, not an exploit modification. It displays manufacturer, model, Android, security patch, ABI, kernel release and app UID, and copies the report.
+Baseline: TempRoot v2 Check Only source. New: premium gradient hero, bottom navigation, scan introduction and scanning state, device info, privacy, about, native Android share sheet, version bump.
 
-## Files
-See FILE_PATHS.txt. No original root-engine or native code was included.
+Build: JDK 17, Android SDK 35, Gradle 8.9; `gradle :app:assembleDebug` or GitHub Actions workflow included.
 
-## Verification
-- Archive integrity: verified by Python zipfile CRC test.
-- Static file presence: verified.
-- Gradle compilation: NOT RUN (no validated Android build environment here).
-- Device smoke test: NOT RUN.
-- Signing and installation: NOT VERIFIED.
+Verification: ZIP CRC and source structure only. Android compilation, device testing, and final APK size NOT VERIFIED in this environment.
 
-## Risk and rollback
-No kernel changes or exploit execution. Android APK installation still carries ordinary software risk; uninstall the app to roll back. Never confuse this checker with temporary root.
-
-## Next steps
-Upload the ZIP contents to GitHub, run the workflow, review any Gradle error, download artifact only on success, and test on the target phone.
+No root exploit, system modification, or network permissions. Root Engine unavailable.

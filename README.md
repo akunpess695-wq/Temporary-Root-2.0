@@ -1,14 +1,9 @@
-# TempRoot v2 — Check Only
+# TempRoot v2.1 Premium — Check Only
 
-Aplikasi Android diagnostik offline dengan tema gelap ungu. **Tidak menyediakan root, exploit, atau dukungan Magisk.** Root Engine hanya halaman informasi.
+Native Android Java app, AMOLED purple UI, bottom navigation, scan, results, device info, compatibility, tools, engine status, report, privacy, guide, about, settings.
 
-## Fitur
-Dashboard, hasil pemeriksaan, kompatibilitas, Root Engine, laporan salin clipboard, tools, panduan, pengaturan.
+**Build:** upload the contents of this folder to the root of your GitHub repository. Open Actions > Build TempRoot v2 APK > Run workflow. Download artifact `TempRoot-v2-debug` and extract the APK.
 
-## Build
-Push semua isi folder ini ke root repository GitHub. Buka Actions > Build TempRoot v2 APK > Run workflow. Unduh artifact `TempRoot-v2-debug` setelah build berhasil.
+**Local:** Java 17, Android SDK 35, Gradle 8.9; `gradle :app:assembleDebug`.
 
-Build lokal: Java 17, Android SDK 35, Gradle 8.9: `gradle :app:assembleDebug`.
-
-## Keamanan
-Tidak meminta permission, tidak menjalankan exploit, tidak mengubah kernel. Properti bootloader dan status root dapat tidak terbaca atau tidak lengkap. Jangan menganggap hasil pemeriksaan sebagai bukti kompatibilitas exploit.
+No root, exploit, internet permission or system modification. Root status is indicative only. APK size 5–10 MB is a target, not verified.
