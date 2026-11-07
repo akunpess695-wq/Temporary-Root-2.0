@@ -1,20 +1,14 @@
-# TempRoot Checker — Safe v1
+# TempRoot v2 — Check Only
 
-Independent **Check Only** Android app for inspecting non-privileged device information. No root engine, no native exploit, no kernel modules, no `su`, no network permissions.
+Aplikasi Android diagnostik offline dengan tema gelap ungu. **Tidak menyediakan root, exploit, atau dukungan Magisk.** Root Engine hanya halaman informasi.
 
-This is **not** a modified root-capable release of Temporary Root 2.0. It is a clean, intentionally limited checker created after inspecting the user's original source archive.
+## Fitur
+Dashboard, hasil pemeriksaan, kompatibilitas, Root Engine, laporan salin clipboard, tools, panduan, pengaturan.
 
-## Build from Android phone using GitHub
-1. Create a private GitHub repository named `TempRoot-Checker`.
-2. Upload the **contents** of this ZIP, preserving the `.github/workflows/build.yml` path.
-3. Open Actions > Build Safe Checker APK > Run workflow.
-4. After a successful run, download artifact `TempRoot-Checker-Safe-debug` and extract the APK.
-5. Install the APK only if you trust the repository and build result. Android may request permission to install from your file manager.
+## Build
+Push semua isi folder ini ke root repository GitHub. Buka Actions > Build TempRoot v2 APK > Run workflow. Unduh artifact `TempRoot-v2-debug` setelah build berhasil.
 
-The GitHub workflow **compiles** an APK; it never runs code on the phone. Installing and launching the APK are separate actions.
+Build lokal: Java 17, Android SDK 35, Gradle 8.9: `gradle :app:assembleDebug`.
 
-## Known limitations
-- Does not determine root exploit compatibility.
-- Does not verify bootloader status or SELinux state.
-- Does not grant root or support Magisk modules.
-- APK build and device test have not been executed here.
+## Keamanan
+Tidak meminta permission, tidak menjalankan exploit, tidak mengubah kernel. Properti bootloader dan status root dapat tidak terbaca atau tidak lengkap. Jangan menganggap hasil pemeriksaan sebagai bukti kompatibilitas exploit.
