@@ -1,1 +1,8 @@
-
+.github/workflows/build.yml
+README.md
+app/build.gradle.kts
+app/src/main/AndroidManifest.xml
+app/src/main/java/org/temproot/checker/MainActivity.java
+build.gradle.kts
+gradle.properties
+settings.gradle.kts
