@@ -1,1 +1,24 @@
+name: Check Only APK Build
+on:
+  workflow_dispatch:
 
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - name: Build debug APK (does not run app)
+        run: chmod +x ./gradlew && ./gradlew :app:assembleDebug --stacktrace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TempRoot-Check-Only-debug
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
