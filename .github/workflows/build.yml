@@ -1,42 +1,26 @@
-name: Build Safe Checker APK
-
+name: Build TempRoot v2 APK
 on:
   workflow_dispatch:
-
+  push:
+    branches: [main]
 permissions:
   contents: read
-
 jobs:
   build:
     runs-on: ubuntu-24.04
-
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup Java 17
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-
-      - name: Setup Gradle 8.9
-        uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-
-      - name: Check Android SDK
-        run: |
-          echo "ANDROID_HOME=$ANDROID_HOME"
-          test -d "$ANDROID_HOME/platforms"
-          ls "$ANDROID_HOME/platforms"
-
-      - name: Build debug APK
+      - name: Build APK
         run: gradle :app:assembleDebug --stacktrace
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: TempRoot-Checker-debug
+          name: TempRoot-v2-debug
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
